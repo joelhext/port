@@ -264,6 +264,10 @@
                     applyFilter();
                 });
             
+                document.getElementById('reapplyFilter').addEventListener('touchend', function() {
+                    applyFilter();
+                });
+
                 function applyVHSFilter() {
                     // Create scan lines
                     for (let i = 0; i < canvas.height; i += 4) {
