@@ -84,10 +84,16 @@
         <p>I hate frontend so much</p>
         <a href="#" class="toggle-content">Click me!</a>
         <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum, lectus ut accumsan mattis, nisi metus ultrices nunc, nec pulvinar urna magna sed elit. Morbi nec leo sodales, pulvinar mauris sed, sagittis quam. Cras et placerat dui. Cras dapibus massa nec ante mollis pulvinar. Sed imperdiet ante et neque consequat, in consectetur nulla tempor. Quisque dictum finibus leo, eu elementum erat elementum et. Fusce a velit fermentum, lobortis massa ac, vulputate ex. Praesent metus ex, sodales ac ex molestie, lobortis efficitur massa.</p>
+            <p>
+                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡
+            </p>
+            <p>DISCLAIMER: 99% OF THIS WEBSITE WAS BROUGHT TO YOU BY GPT AND COPILOT. WHY WOULD I DO THIS MYSELF?</p>
+            <p>
+                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡
+            </p>        
+            <a href="#" class="toggle-content-2">Fold</a>  
         </div>
-        
-        <br><br><br>
+        <br>
 
         <h3>Writing</h3>
         <a href="#" class="toggle-content">A reflection on digital life</a>
@@ -206,25 +212,16 @@
                     <li>Life is moving more online, disinformation is spreading, accessibility to resources is increasing, we are in the era of post-authorship, pay attention to AI</li>
                     <li>The above online re-affirms my thesis that smaller brands will excel in the future</li>
                 </ul>
-                <br><br>
+                <br>
                 <u>Footnotes</u>
                 <br><br>
-                ChatGPT was not used in writing this besides the screenshotted parts. As I mentioned, digital tone of voice is valuable, and GPT currently unable to replicate this for me.
-                <br><br>
+                ChatGPT was not used in writing this besides the screenshotted parts. As I mentioned, digital tone of voice is valuable, and GPT is currently unable to replicate this for me.
+                <br>
             </p>
             <a href="#" class="toggle-content-2">Fold</a>  
         </div>
         <br><br>
-        <h2>Section 3</h2>
-            <p>
-                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫
-            </p>
-            <p>DISCLAIMER: 99% OF THIS WEBSITE WAS BROUGHT TO YOU BY GPT AND COPILOT. WHY WOULD I DO THIS MYSELF LOL</p>
-            <p>
-                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫
-            </p>
-        </div>
-        <br><br><br>
+        <h2>Filter For Photos (WIP)</h2>
         <div>
             <input type="file" id="imageUpload" /> <button id="reapplyFilter">Reapply Filter</button><br>
             <br>
@@ -370,7 +367,7 @@
             toggleContentLinks2.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
-                    const content = link.elementParent;
+                    const content = link.parentElement;
                     content.classList.toggle('active');
                 });
             });
