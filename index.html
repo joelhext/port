@@ -122,7 +122,7 @@
                 <br><br>
                 You can choose not to care what other people think; or never post online - this is fine. But reminding people that you exist matters too. I appreciate seeing how my friends from school are going, even if some I haven't talked to much since.
                 <br><br>
-                Many people I see here in Tokyo also find a way to monetise their own personal brand, which too is interesting. Usually it's either they sell a product, or they do some freelance work, and their Instagram is as much a business profile as it is a social profile. A business-social profile with the guise of an entirely social profile perhaps.
+                Many people I see here in Tokyo also find a way to monetise their own personal brand. Usually it's either they sell a product, or they do some freelance work, and their Instagram is as much a business profile as it is a social profile. A business-social profile with the guise of an entirely social profile perhaps.
                 <br><br>
                 So to summarise this section, sharing interests is a valuable part of digital life, because it affects how other people feel towards you, in one way or another.
                 <br><br><br>
@@ -138,11 +138,11 @@
                 <br><br>
                 Because of this I believe we need to be careful when speaking online. Like I said, everyone has had different digital experiences, a different personal understanding of online talk, so things are interpreted differently. Context is more important online than in person when talking - mainly because facial expressions and other physical cues are absent. It's much easier to accidentally offend someone online than in person. Clarity is key.
                 <br><br>
-                With this in mind it's also important not to read between the lines too much when other people talk to you. Especially if English is not their first language, which is something I have especially come to realise since moving to Tokyo - English as a first language allows you to see the world through a wider and more information dense lens.
+                With this in mind it's also important not to read between the lines too much when other people talk to you. Especially if English is not their first language.
                 <br><br><br>
                 <u>The Future</u>
                 <br><br>
-                I agree with The Sovereign Individual (1997) view that life is moving increasingly online - 26 year after it was written, the average person spends half of their awake time online.
+                I agree with The Sovereign Individual (1997) view that life is moving increasingly online - 26 year after it was published, the average person spends half of their awake time online.
                 <br><br>
                 Information is becoming more available and more abundant. Decentralisation of news sources is already happening - the newspaper is rarely read by my generation; we get our news through TikTok, Twitter, and all else.
                 <br><br>
@@ -158,11 +158,11 @@
                 <br><br>
                 This ties back to my previous point - everyone is building their personal 'brand', in one way or another, intentionally or not - and more of these will become monetised - as I have observed.
                 <br><br>
-                The ability to monetise a small following will only increase. Why? Because accessibility to resources is becoming increasingly abundant. What I mean is, it is easier than ever for an individual to produce a product or a service, advertise that service independently, and sell that service. As a result anyone can facilitate their own monetisation, if they want to. Ten years ago, with 5000 Instagram followers, it would have been much harder to get any sort of sponsorship, or sell any product to a following. Look what ChatGPT said:
+                Naturally the ability to monetise a small following will only increase. Why? Because accessibility to resources is becoming increasingly abundant. What I mean is, it is easier than ever for an individual to produce a product or a service, advertise that service independently, and sell that service. As a result anyone can facilitate their own monetisation, if they want to. Ten years ago, with 5000 Instagram followers, it would have been much harder to get any sort of sponsorship, or sell any product to a following. Look what ChatGPT said:
                 <br><br>
                 <img src="img/3.webp" alt="3" width="100%">
                 <br><br>
-                I feel now that people appreciate smaller brands too for a few reasons. One, they feel more genuine and down to earth than corporations. Two, with the increase of information availability, trends are spotted more quickly, so the ability to be unique is harder, and hence smaller brands are looked upon for a sense of uniqueness. Gatekeeping culture is a manifestation of this effect - and it's only getting worse. It's worth me noting that this whole paragraph was related to fashion more than anything else, and that it was entirely anecdotal.
+                I feel now that people appreciate smaller brands too for a few reasons. One, they feel more genuine and down to earth than corporations. Two, with the increase of information availability, trends are spotted more quickly, so the ability to be unique is harder, and hence smaller brands are looked upon for a sense of uniqueness. Gatekeeping culture is a visible manifestation of this effect. It's worth me noting that this whole paragraph was related to fashion more than anything else, and that it was entirely anecdotal.
                 <br><br>
                 <u>The era of post-authorship</u>
                 <br><br>
@@ -176,7 +176,7 @@
                 <br><br>
                 NFTs are a viable solution to proof of authorship, but what matters is only if people care about this proof - and they don't.
                 <br><br>
-                Another mega-trend which overshadows post-authorship, perhaps the main one, is AI. Accessibility to creation of digital content (and soon, perhaps physical) through AI is finally reaching the masses with the likes of ChatGPT and DALLE-3. It took me 3s to make this:
+                Another mega-trend which overshadows post-authorship, perhaps the main one, is AI. Accessibility to creation of digital content (and soon, perhaps physical) through AI is finally reaching the masses with the likes of ChatGPT and DALLE-3. It took me 3 seconds to make this:
                 <br><br>
                 <img src="img/5.webp" alt="5" width="100%">
                 <br><br>
@@ -194,7 +194,7 @@
                     <li>Be conscious of the subtleties in digital tone of voice and the effects of it</li>
                     <li>You have a personal brand</li>
                     <li>More and more people will become sentient of their brand, and will try use it</li>
-                    <li>Life is moving more online, disinformation is spreading, accessibility to resources is increasing, we are in the era of post-authorship, AI</li>
+                    <li>Life is moving more online, disinformation is spreading, accessibility to resources is increasing, we are in the era of post-authorship, pay attention to AI</li>
                     <li>The above online re-affirms my thesis that smaller brands will excel in the future</li>
                 </ul>
                 <br><br>
@@ -232,7 +232,9 @@
                     img.src = URL.createObjectURL(file);
                     
                     img.onload = function() {
-                        const aspectRatio = img.width / img.height;
+                        let aspectRatio = img.width / img.height;
+                        // squash the image slightly
+                        aspectRatio = aspectRatio * 1.2;
                         let newWidth, newHeight;
 
                         if (aspectRatio > 1) {
@@ -247,34 +249,13 @@
                         canvas.height = newHeight;
                         ctx.drawImage(img, 0, 0, newWidth, newHeight);
 
-                        // Create scan lines
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';  // semi-transparent black
-                        for (let i = 0; i < newHeight; i += 4) {
-                            ctx.fillRect(0, i, newWidth, 1);
-                        }
-
-                        // Color shift
-                        let imageData = ctx.getImageData(0, 0, newWidth, newHeight);
-                        let data = imageData.data;
-
-                        for (let i = 0; i < data.length; i += 4) {
-                            data[i] += 10;   // Red channel
-                            data[i + 2] -= 10; // Blue channel
-                        }
+                        applyVHSFilter();
                         
-                        ctx.putImageData(imageData, 0, 0);
+                        // Set canvas display width to 600px while maintaining the aspect ratio.
+                        canvas.style.width = '500px';
+                        canvas.style.maxWidth = '100%';
+                        canvas.style.height = `${canvas.style.width / aspectRatio}px`;
 
-                        // Add noise
-                        const noiseStrength = 25;
-                        for (let i = 0; i < data.length; i += 4) {
-                            let rand = (0.5 - Math.random()) * noiseStrength;
-                            data[i] += rand;
-                            data[i + 1] += rand;
-                            data[i + 2] += rand;
-                        }
-
-                        ctx.putImageData(imageData, 0, 0);
-                        
                         canvas.style.display = 'block';
                     };
                 });
