@@ -280,6 +280,11 @@
                     });
                 }
 
+                document.getElementById('reapplyFilter').addEventListener('touchend', function(event) {
+                    event.preventDefault();
+                    applyFilter();
+                });
+
 
                 function applyVHSFilter() {
                     // Create scan lines
