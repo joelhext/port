@@ -51,6 +51,11 @@
             button {
                 cursor: pointer;
             }
+
+            #reapplyFilter:active, #reapplyFilter:hover {
+                opacity: 0.99;  /* or any other style */
+            }
+
             
             a:hover {
                 text-decoration: underline;
@@ -264,13 +269,17 @@
                     };
                 });
             
-                document.getElementById('reapplyFilter').addEventListener('click', function() {
-                    applyFilter();
-                });
-            
-                document.getElementById('reapplyFilter').addEventListener('touchend', function() {
-                    applyFilter();
-                });
+                const isTouchDevice = 'ontouchstart' in document.documentElement;
+                if (isTouchDevice) {
+                    document.getElementById('reapplyFilter').addEventListener('touchend', function() {
+                        applyFilter();
+                    });
+                } else {
+                    document.getElementById('reapplyFilter').addEventListener('click', function() {
+                        applyFilter();
+                    });
+                }
+
 
                 function applyVHSFilter() {
                     // Create scan lines
