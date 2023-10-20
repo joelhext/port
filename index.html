@@ -266,29 +266,7 @@
                     };
                 });
             
-                const reapplyFilterButton = document.getElementById('reapplyFilter');
-                let isFilterApplied = false;
-
-                const applyFilterHandler = function(event) {
-                    if (isFilterApplied) return; // Exit if filter was just applied
-
-                    // Prevent default for touch event to stop it from triggering a click event
-                    if (event.type === 'touchend') {
-                        event.preventDefault();
-                    }
-
-                    applyFilter();
-                    isFilterApplied = true;
-
-                    setTimeout(() => {
-                        isFilterApplied = false;
-                    }, 500); // Block for 500ms, adjust this time if necessary
-                };
-
-                reapplyFilterButton.addEventListener('click', applyFilterHandler);
-                reapplyFilterButton.addEventListener('touchend', applyFilterHandler);
-
-
+                document.getElementById('reapplyFilter').addEventListener('click', applyFilter);
 
                 function applyVHSFilter() {
                     // Create scan lines
