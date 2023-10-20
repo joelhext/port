@@ -266,21 +266,28 @@
                     };
                 });
             
-                const isTouchDevice = 'ontouchstart' in document.documentElement;
-                if (isTouchDevice) {
-                    document.getElementById('reapplyFilter').addEventListener('touchend', function() {
-                        applyFilter();
-                    });
-                } else {
-                    document.getElementById('reapplyFilter').addEventListener('click', function() {
-                        applyFilter();
-                    });
-                }
+                const reapplyFilterButton = document.getElementById('reapplyFilter');
+                let isFilterApplied = false;
 
-                document.getElementById('reapplyFilter').addEventListener('touchend', function(event) {
-                    event.preventDefault();
+                const applyFilterHandler = function(event) {
+                    if (isFilterApplied) return; // Exit if filter was just applied
+
+                    // Prevent default for touch event to stop it from triggering a click event
+                    if (event.type === 'touchend') {
+                        event.preventDefault();
+                    }
+
                     applyFilter();
-                });
+                    isFilterApplied = true;
+
+                    setTimeout(() => {
+                        isFilterApplied = false;
+                    }, 500); // Block for 500ms, adjust this time if necessary
+                };
+
+                reapplyFilterButton.addEventListener('click', applyFilterHandler);
+                reapplyFilterButton.addEventListener('touchend', applyFilterHandler);
+
 
 
                 function applyVHSFilter() {
