@@ -74,7 +74,6 @@
 
             #canvas {
                 display: none;
-                max-width: 580px;
             }
         </style>
     </head>
@@ -239,11 +238,10 @@
                     img.src = URL.createObjectURL(file);
                     
                     img.onload = function() {
-                        let aspectRatio = img.width / img.height;
-                        // squash the image slightly
-                        aspectRatio = aspectRatio * 1.2;
-                        let newWidth, newHeight;
+                        let aspectRatio = (img.width / img.height) * 1.2;  // squash the image slightly
 
+                        // Compute desired canvas dimensions
+                        let newWidth, newHeight;
                         if (aspectRatio > 1) {
                             newWidth = 300 * aspectRatio;
                             newHeight = 300;
@@ -257,12 +255,13 @@
                         ctx.drawImage(img, 0, 0, newWidth, newHeight);
 
                         applyVHSFilter();
-                        
-                        // Set canvas display width to 600px while maintaining the aspect ratio.
-                        canvas.style.width = '500px';
-                        canvas.style.maxWidth = '100%';
-                        canvas.style.height = `${canvas.style.width / aspectRatio}px`;
 
+                        // Compute display dimensions for canvas
+                        const displayWidth = Math.min(window.innerWidth-10, 500);  // No wider than screen width or 500px
+                        const displayHeight = displayWidth / aspectRatio;
+
+                        canvas.style.width = `${displayWidth}px`;
+                        canvas.style.height = `${displayHeight}px`;
                         canvas.style.display = 'block';
                     };
                 });
