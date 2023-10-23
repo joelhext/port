@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>joel</title>
+        <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <a href="/">back</a>
+        <h2>Filter For Photos (WIP)</h2>
+        <div>
+            <input type="file" id="imageUpload" /> <button id="reapplyFilter">Reapply Filter</button><br>
+            <br>
+            <canvas id="canvas"></canvas><br>
+            <button onclick="downloadImage()">Download Edited Image</button><br><br>
+
+            <script>
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                let img = new Image();
+            
+                document.getElementById('imageUpload').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    img.src = URL.createObjectURL(file);
+                    
+                    img.onload = function() {
+                        let aspectRatio = (img.width / img.height) * 1.2;  // squash the image slightly
+
+                        // Compute desired canvas dimensions
+                        let newWidth, newHeight;
+                        if (aspectRatio > 1) {
+                            newWidth = 300 * aspectRatio;
+                            newHeight = 300;
+                        } else {
+                            newWidth = 300;
+                            newHeight = 300 / aspectRatio;
+                        }
+
+                        canvas.width = newWidth;
+                        canvas.height = newHeight;
+                        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                        applyVHSFilter();
+
+                        // Compute display dimensions for canvas
+                        const displayWidth = Math.min(window.innerWidth-10, 500);  // No wider than screen width or 500px
+                        const displayHeight = displayWidth / aspectRatio;
+
+                        canvas.style.width = `${displayWidth}px`;
+                        canvas.style.height = `${displayHeight}px`;
+                        canvas.style.display = 'block';
+                    };
+                });
+            
+                document.getElementById('reapplyFilter').addEventListener('click', applyFilter);
+
+                function applyVHSFilter() {
+                    // Create scan lines
+                    for (let i = 0; i < canvas.height; i += 4) {
+                        ctx.fillStyle = "rgba(18, 18, 18, 0.2)"; // adjust rgba values to tweak the scanlines
+                        ctx.fillRect(0, i, canvas.width, 2);
+                    }
+
+                    // Slight RGB channel shift
+                    let shiftAmount = 2; // tweak this value for more/less shift
+                    ctx.globalCompositeOperation = 'screen';
+                    ctx.fillStyle = "rgba(255, 0, 0, 0.5)";
+                    ctx.fillRect(-shiftAmount, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
+                    ctx.fillRect(0, -shiftAmount, canvas.width, canvas.height);
+                    ctx.fillStyle = "rgba(0, 0, 255, 0.5)";
+                    ctx.fillRect(shiftAmount, 0, canvas.width, canvas.height);
+                    ctx.globalCompositeOperation = 'source-over';
+                }
+
+
+                function applyFilter() {
+                    // Determine if the 'deep-fried meme' filter should be applied
+                    const deepFryChance = Math.random();
+                    if (deepFryChance < 0.1) {
+                        // Apply 'deep-fried meme' filter values
+                        ctx.filter = 'contrast(200%) brightness(150%) saturate(300%) hue-rotate(45deg)';
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    }
+                    else if (Math.random() < 0.2) {
+                        // Apply grayscale filter
+                        ctx.filter = 'grayscale(100%)';
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        applyVHSFilter();
+                    } else {
+                        // Randomly generate values for each filter property
+                        const brightness = Math.random() * 150 + 50;  // value between 50% and 200%
+                        const contrast = Math.random() * 200 + 100;   // value between 100% and 300%
+                        const hueRotate = Math.random() * 360;        // value between 0deg and 360deg
+                        const saturate = Math.random() * 200 + 50;    // value between 50% and 250%
+
+                        // Construct the filter string
+                        ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) hue-rotate(${hueRotate}deg) saturate(${saturate}%)`;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        applyVHSFilter();
+                    }
+                }
+
+            
+                function downloadImage() {
+                    const link = document.createElement('a');
+                    link.download = 'edited_image.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                }
+            </script>
+        </div>
+    </body>
