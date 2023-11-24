@@ -5,20 +5,32 @@
         <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/styles.css" />
+        <script>
+            function updateUnixTime() {
+                var now = new Date();
+                var unixTime = Math.floor(now.getTime() / 1000);
+                document.getElementById("unixTimeDisplay").innerText = unixTime;
+            }
+
+            window.onload = function() {
+                updateUnixTime();
+                setInterval(updateUnixTime, 1000);
+            };
+        </script>
     </head>
+    
     <body>
         <h1>Title Text</h1>
-        
         <h2>Section 1</h2>
         <p>I hate frontend so much</p>
         <a href="#" class="toggle-content">Click me!</a>
         <div class="content">
             <p>
-                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡
+                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵
             </p>
-            <p>DISCLAIMER: 99% OF THIS WEBSITE WAS BROUGHT TO YOU BY GPT AND COPILOT. WHY WOULD I DO THIS MYSELF?</p>
+            <p>DISCLAIMER: 99% OF THIS WEBSITE WAS BROUGHT TO YOU BY GPT AND COPILOT.</p>
             <p>
-                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡
+                ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵ ✫ ✱ ✰ ★ ✦ ✪ ✡ ✵
             </p>        
             <a href="#" class="toggle-content-2">Fold</a>  
         </div>
@@ -151,8 +163,6 @@
         </div>
         <br>
         <h3>Stuff</h3>
-            <a href="/filter">Vaporwave filter</a>
-            <br>
             <a href="https://instagram.com/deletedonline" target="_blank">Deleted Online</a>             
             <br>
             <a href="https://twitter.com/joelhext" target="_blank">Twitter</a> 
@@ -163,6 +173,10 @@
 
             <br>
         </div>
+
+        <span id="footer">
+            <p id="unixTimeDisplay"></p>
+        </span>
 
         <script>
             const toggleContentLinks = document.querySelectorAll('.toggle-content');
